@@ -10,6 +10,7 @@ export const ProjectTemplate = ({
   content,
   contentComponent,
   description,
+  tags,
   title,
   helmet,
 }) => {
@@ -71,7 +72,7 @@ const Project = ({ data }) => {
             />
           </Helmet>
         }
-        title={Project.frontmatter.title}
+        title={project.frontmatter.title}
       />
     </Layout>
   )
@@ -86,11 +87,16 @@ Project.propTypes = {
 export default Project
 
 export const pageQuery = graphql`
-  query PRojectByID($id: String!) {
+  query ProjectByID2($id: String!) {
     markdownRemark(id: { eq: $id }) {
       id
       html
-      
+      frontmatter {
+        date(formatString: "MMMM DD, YYYY")
+        title
+        description
+      }
+      rawMarkdownBody
     }
   }
 `
