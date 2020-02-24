@@ -82,8 +82,20 @@ export default () => (
               frontmatter {
                 title
                 templateKey
-                additionalimage
-                featuredimage
+                additionalimage{
+                  childImageSharp {
+                    fluid(maxWidth: 2048, quality: 100) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                } 
+                featuredimage {
+                  childImageSharp {
+                    fluid(maxWidth: 2048, quality: 100) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                } 
                 featuredproject
                 description
                 date 

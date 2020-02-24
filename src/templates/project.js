@@ -59,6 +59,7 @@ ProjectTemplate.propTypes = {
   description: PropTypes.string,
   title: PropTypes.string,
   helmet: PropTypes.object,
+  featuredimage: PropTypes.string
 }
 
 const Project = ({ data }) => {
@@ -103,8 +104,20 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         title
         templateKey
-        additionalimage
-        featuredimage
+        additionalimage{
+            childImageSharp {
+              fluid(maxWidth: 2048, quality: 100) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          } 
+        featuredimage{
+            childImageSharp {
+              fluid(maxWidth: 2048, quality: 100) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          } 
         featuredproject
         description
       }
