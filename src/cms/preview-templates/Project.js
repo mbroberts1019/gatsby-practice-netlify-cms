@@ -81,6 +81,10 @@ export const pageQuery = graphql`
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
+        templateKey
+        additionalimage
+        featuredimage
+        featuredproject
         description
         
       }
